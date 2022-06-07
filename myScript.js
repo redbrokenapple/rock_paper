@@ -1,26 +1,57 @@
 
+const computerSelection = computerPlayer();
+const playerSelection = humanPlayer();
 
-
-const computerChoice = computerPlay()
-const playerChoice = humanPlayer()
-
-function playround() {
-//plays one round
-//rock
+function playRound(playerSelection, computerSelection)  {
+     //plays one round
+     //rock
+if(playerSelection === "rock" && computerSelection === "scissors"){
+     console.log( "Good job! You had a one in three chance to win and you did. Congratulations...");
+     } else if (playerSelection === "rock" && computerSelection === "rock") {
+     console.log ("Oh, Well. It could be worse. You Could of Chosen paper.");
+     } else if (playerSelection === "rock" && computerSelection === "paper") {
+     console.log( "AHAHAHA. You lost. Loser.")
+     }
+     //paper
+     else if(playerSelection === "paper" && computerSelection == "rock"){
+     console.log( "Good job! You had a one in three chance to win and you did. Congratulations...");
+     } else if (playerSelection === "paper" && computerSelection === "paper") {
+     console.log( "Oh, Well. It could be worse. You Could of Chosen scissors.");     
+     } else if (playerSelection === "paper" && computerSelection === "scissors") {
+     return "AHAHAHA. You lost. Loser."
+     }
+     //scissors
+     else if(playerSelection === "scissors" && computerSelection === "paper") {
+     console.log( "Good job! You had a one in three chance to win and you did. Congratulations...");
+     } else if (playerSelection === "scissors" && computerSelection === "scissors") {
+     console.log( "Oh, Well. It could be worse. You Could of Chosen paper.");
+     } else if (playerSelection === "scissors" && computerSelection === "rock") {
+     console.log( "AHAHAHA. You lost. Loser.");
+     } else {
+     console.log( "Good-bye");
+     }
 }
 
 
 function humanPlayer() {
 //sets rules for player
 //prompts player
-     let input = prompt("what do you choose, rock, paper, or scissors?");
+     let input = prompt("what do you choose, rock, paper, or scissors?").toLocaleLowerCase();
      return input;
      }
 
 
-function computerPlay() {
+function computerPlayer() {
 let choices = ["rock", "paper", "scissors"]     
 return choices[Math.floor(Math.random()*choices.length)]
 }
-console.log(computerPlay())
 
+let playerPoints = 0;
+let computerPoints = 0;  
+
+function game()  {
+     for (let i = 0; i < 5; i++) {
+        playRound(playerSelection, computerSelection);
+          }
+     }
+console.log(game());
